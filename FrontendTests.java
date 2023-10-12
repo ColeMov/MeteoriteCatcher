@@ -77,18 +77,18 @@ public class FrontendTests {
         frontend.startCommandLoop();
         String output = tester.checkOutput();
         // add specific output after finishing displayResults()
-        if(output.contains("Printing meteorite results within range...\n")){
+        if(output.contains("Printing meteorite results within range...")){
             Assertions.assertTrue(true);
         }else{
             Assertions.fail("Test Case 4: Failed");
         }
     }
 
-    @Test
     /**
      * Tests expected command loop prompt submission and exits app
      * Should run as expected till exit and encounter no errors
      */
+    @Test
     public void testCase5(){
         TextUITester tester = new TextUITester("4");
         Scanner scnr = new Scanner(System.in);
