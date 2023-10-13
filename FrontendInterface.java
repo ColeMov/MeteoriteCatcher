@@ -61,6 +61,7 @@ public class FrontendInterface {
 	public void loadFile(){
 		System.out.println("Enter file name:");
 		String fileName = scanner.nextLine();
+		System.out.println("Searching for file...");
 		try{
 			backend.readDataFromFile(fileName);
 		}catch(Exception e){
@@ -102,7 +103,7 @@ public class FrontendInterface {
 	 */
 	public void displayResults(List<Meteorite> data){
 		if(data == null){
-			System.out.println("\n");
+			System.out.println("No results in range");
 		}else {
 			for(int i = 0; i < data.size(); i++){
 				System.out.println(data.get(i).toString());
