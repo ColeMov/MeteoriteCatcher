@@ -1,33 +1,43 @@
-public interface Meteorite {
+// --== CS400 Fall 2023 File Header Information ==--
+// Name: Arnav Srivastav
+// Email: asrivastav32@wisc.edu
+// Group: C35
+// TA: Alexander Peseckis
+// Lecturer: Florian Heimerl
+
+public interface Meteorite extends Comparable<Meteorite> {
+    /**
+     * Get the name of the meteorite.
+     *
+     * @return The name of the meteorite.
+     */
+    String getName();
 
     /**
-     * Accessor method to get the name of the meteorite
-     * @return the name of the meteorite
+     * Get the latitude of the meteorite's landing location.
+     *
+     * @return The latitude of the meteorite.
      */
-    public String getName();
+    double getLatitude();
 
     /**
-     * Accessor method to get the latitude of the meteorite
-     * @return the latitude of the meteorite
+     * Get the longitude of the meteorite's landing location.
+     *
+     * @return The longitude of the meteorite.
      */
-    public double getLatitude();
+    double getLongitude();
 
     /**
-     * Accessor method to get the longitude of the meteorite
-     * @return the longitude of the meteorite
+     * Check if the meteorite fell (true) or was found (false).
+     *
+     * @return True if the meteorite fell, false if it was found.
      */
-    public double getLongitude();
+    boolean getFall();
 
     /**
-     * Accessor method to get the fall of the meteortite
-     * @return the fall of the meteorite
+     * Get the mass of the meteorite.
+     *
+     * @return The mass of the meteorite.
      */
-    public double getFall();
-
-    /**
-     * Accessor method to get the mass of the meteortite
-     * @return the mass of the meteorite
-     */
-    public double getMass();
-
+    double getMass();
 }
