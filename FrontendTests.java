@@ -12,7 +12,7 @@ public class FrontendTests {
         TextUITester tester = new TextUITester("101\n4");
         Scanner scnr = new Scanner(System.in);
         BackendPlaceholderFrontend backend = new BackendPlaceholderFrontend();
-        FrontendInterface frontend = new FrontendInterface(backend,scnr);
+        FrontendImplementation frontend = new FrontendImplementation(backend,scnr);
         frontend.startCommandLoop();
 
         String output = tester.checkOutput();
@@ -29,10 +29,10 @@ public class FrontendTests {
      * Should inform user of submission and run backend file call
      */
     public void loadFileTest(){
-        TextUITester tester = new TextUITester("1\nfakeFile.txt");
+        TextUITester tester = new TextUITester("1\nfile.txt");
         Scanner scnr = new Scanner(System.in);
         BackendPlaceholderFrontend backend = new BackendPlaceholderFrontend();
-        FrontendInterface frontend = new FrontendInterface(backend,scnr);
+        FrontendImplementation frontend = new FrontendImplementation(backend,scnr);
 
         frontend.startCommandLoop();
         String output = tester.checkOutput();
@@ -52,7 +52,7 @@ public class FrontendTests {
         TextUITester tester = new TextUITester("3\n503.00\n500.00\n500.00\n503.00");
         Scanner scnr = new Scanner(System.in);
         BackendPlaceholderFrontend backend = new BackendPlaceholderFrontend();
-        FrontendInterface frontend = new FrontendInterface(backend,scnr);
+        FrontendImplementation frontend = new FrontendImplementation(backend,scnr);
 
         frontend.startCommandLoop();
         String output = tester.checkOutput();
@@ -72,7 +72,7 @@ public class FrontendTests {
         TextUITester tester = new TextUITester("3\n0.00\n0.01");
         Scanner scnr = new Scanner(System.in);
         BackendPlaceholderFrontend backend = new BackendPlaceholderFrontend();
-        FrontendInterface frontend = new FrontendInterface(backend,scnr);
+        FrontendImplementation frontend = new FrontendImplementation(backend,scnr);
 
         frontend.startCommandLoop();
         String output = tester.checkOutput();
@@ -92,7 +92,7 @@ public class FrontendTests {
         TextUITester tester = new TextUITester("2");
         Scanner scnr = new Scanner(System.in);
         BackendPlaceholderFrontend backend = new BackendPlaceholderFrontend();
-        FrontendInterface frontend = new FrontendInterface(backend,scnr);
+        FrontendImplementation frontend = new FrontendImplementation(backend,scnr);
 
         frontend.startCommandLoop();
         String output = tester.checkOutput();
@@ -112,7 +112,7 @@ public class FrontendTests {
         TextUITester tester = new TextUITester("4");
         Scanner scnr = new Scanner(System.in);
         BackendPlaceholderFrontend backend = new BackendPlaceholderFrontend();
-        FrontendInterface frontend = new FrontendInterface(backend,scnr);
+        FrontendImplementation frontend = new FrontendImplementation(backend,scnr);
 
         frontend.startCommandLoop();
         String output = tester.checkOutput();
@@ -121,5 +121,12 @@ public class FrontendTests {
         }else{
             Assertions.fail("Test Case 6: Failed");
         }
+    }
+
+    public void fileNotFoundIntegrationTest() {
+        TextUITester tester = new TextUITester("1\nunknownFile.txt");
+        Scanner scnr = new Scanner(System.in);
+        BackendPlaceholderFrontend backend = new BackendPlaceholderFrontend();
+
     }
 }
