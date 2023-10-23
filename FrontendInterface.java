@@ -13,7 +13,6 @@ public interface FrontendInterface {
 		this.backend = backend;
 		this.scanner = scanner;
 	}
-
 	 */
 
 
