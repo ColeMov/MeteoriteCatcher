@@ -14,7 +14,7 @@ public class FrontendTests {
     public void invalidCommandTest(){
         TextUITester tester = new TextUITester("101\n4");
         Scanner scnr = new Scanner(System.in);
-        BackendPlaceholderFrontend backend = new BackendPlaceholderFrontend();
+        BackendImplementation backend = new BackendImplementation();
         FrontendImplementation frontend = new FrontendImplementation(backend,scnr);
         frontend.startCommandLoop();
 
@@ -34,7 +34,7 @@ public class FrontendTests {
     public void loadFileTest(){
         TextUITester tester = new TextUITester("1\nfile.txt");
         Scanner scnr = new Scanner(System.in);
-        BackendPlaceholderFrontend backend = new BackendPlaceholderFrontend();
+        BackendImplementation backend = new BackendImplementation();
         FrontendImplementation frontend = new FrontendImplementation(backend,scnr);
 
         frontend.startCommandLoop();
@@ -54,7 +54,7 @@ public class FrontendTests {
     public void invalidRangeTest(){
         TextUITester tester = new TextUITester("3\n503.00\n500.00\n500.00\n503.00");
         Scanner scnr = new Scanner(System.in);
-        BackendPlaceholderFrontend backend = new BackendPlaceholderFrontend();
+        BackendImplementation backend = new BackendImplementation();
         FrontendImplementation frontend = new FrontendImplementation(backend,scnr);
 
         frontend.startCommandLoop();
@@ -74,7 +74,7 @@ public class FrontendTests {
     public void emptyRangeTest(){
         TextUITester tester = new TextUITester("3\n0.00\n0.01");
         Scanner scnr = new Scanner(System.in);
-        BackendPlaceholderFrontend backend = new BackendPlaceholderFrontend();
+        BackendImplementation backend = new BackendImplementation();
         FrontendImplementation frontend = new FrontendImplementation(backend,scnr);
 
         frontend.startCommandLoop();
@@ -94,7 +94,7 @@ public class FrontendTests {
     public void loadHighestTest(){
         TextUITester tester = new TextUITester("2");
         Scanner scnr = new Scanner(System.in);
-        BackendPlaceholderFrontend backend = new BackendPlaceholderFrontend();
+        BackendImplementation backend = new BackendImplementation();
         FrontendImplementation frontend = new FrontendImplementation(backend,scnr);
 
         frontend.startCommandLoop();
@@ -114,7 +114,7 @@ public class FrontendTests {
     public void exitTest(){
         TextUITester tester = new TextUITester("4");
         Scanner scnr = new Scanner(System.in);
-        BackendPlaceholderFrontend backend = new BackendPlaceholderFrontend();
+        BackendImplementation backend = new BackendImplementation();
         FrontendImplementation frontend = new FrontendImplementation(backend,scnr);
 
         frontend.startCommandLoop();
@@ -134,17 +134,15 @@ public class FrontendTests {
     public void fileNotFoundIntegrationTest() {
         TextUITester tester = new TextUITester("1\nunknownFile.txt");
         Scanner scnr = new Scanner(System.in);
-        BackendPlaceholderFrontend backend = new BackendPlaceholderFrontend();
+        BackendImplementation backend = new BackendImplementation();
         FrontendImplementation frontend = new FrontendImplementation(backend, scnr);
 
-        try{
-            frontend.startCommandLoop();
-            String output = tester.checkOutput();
-            Assertions.fail("Error not thrown");
-        }catch(FileNotFoundException e){
+        frontend.startCommandLoop();
+        String output = tester.checkOutput();
+        if(output.contains("File not found")){
             Assertions.assertTrue(true);
-        }catch(Exception e){
-            Assertions.fail("Incorrect error thrown");
+        }else{
+            Assertions.fail("Error not thrown");
         }
     }
 
@@ -156,7 +154,7 @@ public class FrontendTests {
     public void dataReturnedIntegrationTest(){
         TextUITester tester = new TextUITester("3\n500.00\n503.00");
         Scanner scnr = new Scanner(System.in);
-        BackendPlaceholderFrontend backend = new BackendPlaceholderFrontend();
+        BackendImplementation backend = new BackendImplementation();
         FrontendImplementation frontend = new FrontendImplementation(backend, scnr);
 
         frontend.startCommandLoop();

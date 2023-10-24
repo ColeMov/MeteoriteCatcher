@@ -95,7 +95,7 @@ public class FrontendImplementation implements FrontendInterface {
             high = scanner.nextDouble();
         }
         System.out.println("Printing meteorites within range...");
-        displayResults(backend.getMeteoritesByMassRange(low,high));
+        displayResults(backend.getMeteoritesWithinMassRange(low,high));
     }
 
     /**
@@ -122,7 +122,7 @@ public class FrontendImplementation implements FrontendInterface {
 
     public static void main(String[] args){
         Scanner scan = new Scanner(System.in);
-        BackendPlaceholderFrontend back= new BackendPlaceholderFrontend();
+        BackendImplementation back= new BackendImplementation();
         FrontendImplementation front = new FrontendImplementation(back, scan);
         front.startCommandLoop();
     }
