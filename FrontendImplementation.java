@@ -1,3 +1,10 @@
+// --== CS400 Fall 2023 File Header Information ==--
+// Name: Cole Movsessian
+// Email: movsessian@wisc.edu
+// Group: C35
+// TA: Alexander Peseckis
+// Lecturer: Florian Heimerl
+
 import java.util.Scanner;
 import java.util.List;
 
@@ -95,7 +102,7 @@ public class FrontendImplementation implements FrontendInterface {
             high = scanner.nextDouble();
         }
         System.out.println("Printing meteorites within range...");
-        displayResults(backend.getMeteoritesByMassRange(low,high));
+        displayResults(backend.getMeteoritesWithinMassRange(low,high));
     }
 
     /**
@@ -118,13 +125,6 @@ public class FrontendImplementation implements FrontendInterface {
      */
     public void exitApp() {
         System.out.println("Exiting application...");
-    }
-
-    public static void main(String[] args){
-        Scanner scan = new Scanner(System.in);
-        BackendPlaceholderFrontend back= new BackendPlaceholderFrontend();
-        FrontendImplementation front = new FrontendImplementation(back, scan);
-        front.startCommandLoop();
     }
 }
 

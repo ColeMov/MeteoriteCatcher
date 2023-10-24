@@ -1,3 +1,10 @@
+// --== CS400 Fall 2023 File Header Information ==--
+// Name: Cole Movsessian
+// Email: movsessian@wisc.edu
+// Group: C35
+// TA: Alexander Peseckis
+// Lecturer: Florian Heimerl
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
@@ -14,7 +21,7 @@ public class FrontendTests {
     public void invalidCommandTest(){
         TextUITester tester = new TextUITester("101\n4");
         Scanner scnr = new Scanner(System.in);
-        BackendPlaceholderFrontend backend = new BackendPlaceholderFrontend();
+        BackendImplementation backend = new BackendImplementation();
         FrontendImplementation frontend = new FrontendImplementation(backend,scnr);
         frontend.startCommandLoop();
 
@@ -34,7 +41,7 @@ public class FrontendTests {
     public void loadFileTest(){
         TextUITester tester = new TextUITester("1\nfile.txt");
         Scanner scnr = new Scanner(System.in);
-        BackendPlaceholderFrontend backend = new BackendPlaceholderFrontend();
+        BackendImplementation backend = new BackendImplementation();
         FrontendImplementation frontend = new FrontendImplementation(backend,scnr);
 
         frontend.startCommandLoop();
@@ -54,7 +61,7 @@ public class FrontendTests {
     public void invalidRangeTest(){
         TextUITester tester = new TextUITester("3\n503.00\n500.00\n500.00\n503.00");
         Scanner scnr = new Scanner(System.in);
-        BackendPlaceholderFrontend backend = new BackendPlaceholderFrontend();
+        BackendImplementation backend = new BackendImplementation();
         FrontendImplementation frontend = new FrontendImplementation(backend,scnr);
 
         frontend.startCommandLoop();
@@ -68,18 +75,18 @@ public class FrontendTests {
 
     @Test
     /**
-     * Tests if loadAllRange command is called and range with no meteorites is submitted
-     * Should finish execution and display empty results
+     * Tests if loadAllRange command is called and range is submitted
+     * Should finish execution and display results
      */
-    public void emptyRangeTest(){
+    public void rangeTest(){
         TextUITester tester = new TextUITester("3\n0.00\n0.01");
         Scanner scnr = new Scanner(System.in);
-        BackendPlaceholderFrontend backend = new BackendPlaceholderFrontend();
+        BackendImplementation backend = new BackendImplementation();
         FrontendImplementation frontend = new FrontendImplementation(backend,scnr);
 
         frontend.startCommandLoop();
         String output = tester.checkOutput();
-        if(output.contains("Printing meteorites within range...") && output.contains("No results in range")){
+        if(output.contains("Printing meteorites within range...")){
             Assertions.assertTrue(true);
         }else{
             Assertions.fail("Test Case 4: Failed");
@@ -94,7 +101,7 @@ public class FrontendTests {
     public void loadHighestTest(){
         TextUITester tester = new TextUITester("2");
         Scanner scnr = new Scanner(System.in);
-        BackendPlaceholderFrontend backend = new BackendPlaceholderFrontend();
+        BackendImplementation backend = new BackendImplementation();
         FrontendImplementation frontend = new FrontendImplementation(backend,scnr);
 
         frontend.startCommandLoop();
@@ -114,7 +121,7 @@ public class FrontendTests {
     public void exitTest(){
         TextUITester tester = new TextUITester("4");
         Scanner scnr = new Scanner(System.in);
-        BackendPlaceholderFrontend backend = new BackendPlaceholderFrontend();
+        BackendImplementation backend = new BackendImplementation();
         FrontendImplementation frontend = new FrontendImplementation(backend,scnr);
 
         frontend.startCommandLoop();
@@ -134,17 +141,15 @@ public class FrontendTests {
     public void fileNotFoundIntegrationTest() {
         TextUITester tester = new TextUITester("1\nunknownFile.txt");
         Scanner scnr = new Scanner(System.in);
-        BackendPlaceholderFrontend backend = new BackendPlaceholderFrontend();
+        BackendImplementation backend = new BackendImplementation();
         FrontendImplementation frontend = new FrontendImplementation(backend, scnr);
 
-        try{
-            frontend.startCommandLoop();
-            String output = tester.checkOutput();
-            Assertions.fail("Error not thrown");
-        }catch(FileNotFoundException e){
+        frontend.startCommandLoop();
+        String output = tester.checkOutput();
+        if(output.contains("File not found")){
             Assertions.assertTrue(true);
-        }catch(Exception e){
-            Assertions.fail("Incorrect error thrown");
+        }else{
+            Assertions.fail("Error not thrown");
         }
     }
 
@@ -156,7 +161,7 @@ public class FrontendTests {
     public void dataReturnedIntegrationTest(){
         TextUITester tester = new TextUITester("3\n500.00\n503.00");
         Scanner scnr = new Scanner(System.in);
-        BackendPlaceholderFrontend backend = new BackendPlaceholderFrontend();
+        BackendImplementation backend = new BackendImplementation();
         FrontendImplementation frontend = new FrontendImplementation(backend, scnr);
 
         frontend.startCommandLoop();
