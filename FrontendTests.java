@@ -1,3 +1,10 @@
+// --== CS400 Fall 2023 File Header Information ==--
+// Name: Cole Movsessian
+// Email: movsessian@wisc.edu
+// Group: C35
+// TA: Alexander Peseckis
+// Lecturer: Florian Heimerl
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
