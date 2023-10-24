@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Script started on 2023-10-13 17:25:03+00:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="180" LINES="50"]
 [?2004h]0;movsessian@my-cs400-vm: ~/p1[01;32mmovsessian@my-cs400-vm[00m:[01;34m~/p1[00m$ git ststu[K[K[Katus
 [?2004lOn branch frontend
@@ -61,3 +62,44 @@ Test run finished after 198 ms
 [?2004lexit
 
 Script done on 2023-10-13 17:25:55+00:00 [COMMAND_EXIT_CODE="0"]
+=======
+Script started on Sun Oct 15 21:40:08 2023
+[1m[7m%[27m[1m[0m                                                                                                                                            [0m[27m[24m[Jarnav@Arnavs-MacBook-Air p1 % [K[?2004h[7mgit status[27m[10D[27mg[27mi[27mt[27m [27ms[27mt[27ma[27mt[27mu[27ms[?2004l
+On branch backend
+Your branch is up to date with 'origin/backend'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	[31mdeleted:    Backend.java[m
+	[31mdeleted:    meteorites.csv[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31m.DS_Store[m
+	[31mlog[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[1m[7m%[27m[1m[0m                                                                                                                                            [0m[27m[24m[Jarnav@Arnavs-MacBook-Air p1 % [K[?2004h[7mgit log -1[27m[10D[27mg[27mi[27mt[27m [27ml[27mo[27mg[27m [27m-[27m1[?2004l
+[?1h=[33mcommit 1fc0430a6926f8915a3dc202f5a5307e454d5921[m[33m ([m[1;36mHEAD -> [m[1;32mbackend[m[33m, [m[1;31morigin/backend[m[33m)[m[m
+Author: Arnav Srivastav <arnav@Arnavs-MacBook-Air.local>[m
+Date:   Sun Oct 15 21:36:14 2023 -0500[m
+[m
+    Added files[m
+[K[?1l>[1m[7m%[27m[1m[0m                                                                                                                                            [0m[27m[24m[Jarnav@Arnavs-MacBook-Air p1 % [K[?2004h[7mmake clean[27m[10D[27mm[27ma[27mk[27me[27m [27mc[27ml[27me[27ma[27mn[?2004l
+rm *.class
+rm: *.class: No such file or directory
+make: *** [clean] Error 1
+[1m[7m%[27m[1m[0m                                                                                                                                            [0m[27m[24m[Jarnav@Arnavs-MacBook-Air p1 % [K[?2004h[7mls[27m[27ml[27ms[?2004l
+BackendDeveloperTests.java			Makefile
+BackendImplementation.java			Meteorite.java
+BackendInterface.java				MeteoriteImpl.java
+BackendPlaceholder.java				SortedCollectionInterface.java
+IterableMultiKeySortedCollectionInterface.java	log
+KeyListInterface.java
+[1m[7m%[27m[1m[0m                                                                                                                                            [0m[27m[24m[Jarnav@Arnavs-MacBook-Air p1 % [K[?2004h[7mmake runTests[27m[13D[27mm[27ma[27mk[27me[27m [27mr[27mu[27mn[27mT[27me[27ms[27mt[27ms[?2004l
+make: *** No rule to make target `runTests'.  Stop.
+[1m[7m%[27m[1m[0m                                                                                                                                            [0m[27m[24m[Jarnav@Arnavs-MacBook-Air p1 % [K[?2004h[7mexit[27m[27me[27mx[27mi[27mt[?2004l
+
+Script done on Sun Oct 15 21:42:02 2023
+>>>>>>> backend

@@ -5,6 +5,7 @@
 // TA: Alexander Peseckis
 // Lecturer: Florian Heimerl
 
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.List;
 
@@ -66,6 +67,11 @@ public class FrontendImplementation implements FrontendInterface {
      * Specifies and loads given file
      */
     public void loadFile(){
+        try {
+            backend.insertFromCSV("meteorites.csv");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         System.out.println("Enter file name:");
         String fileName = scanner.nextLine();
         System.out.println("Searching for file...");
@@ -80,6 +86,11 @@ public class FrontendImplementation implements FrontendInterface {
      * Lists meteorites with highest mass
      */
     public void listHighMeteorites(){
+        try {
+            backend.insertFromCSV("meteorites.csv");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         System.out.println("Printing meteorites with highest mass...");
         displayResults(backend.getMeteoritesWithMaxMass());
     }
@@ -89,6 +100,12 @@ public class FrontendImplementation implements FrontendInterface {
      * @throws IllegalArgumentException if given range is invalid
      */
     public void listAllRange() throws IllegalArgumentException{
+        try {
+            backend.insertFromCSV("meteorites.csv");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         System.out.println("Enter threshold in grams(low):");
         double low = scanner.nextDouble();
         System.out.println("Enter threshold in grams(high):");
@@ -113,8 +130,7 @@ public class FrontendImplementation implements FrontendInterface {
             System.out.println("No results in range");
         }else {
             for(int i = 0; i < data.size(); i++){
-                System.out.println(data.get(i).toString());
-                System.out.println(data.get(i).toString());
+                System.out.println(data.get(i).getName());
             }
         }
         System.out.println("==========================");

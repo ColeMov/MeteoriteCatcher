@@ -39,14 +39,14 @@ public class FrontendTests {
      * Should inform user of submission and run backend file call
      */
     public void loadFileTest(){
-        TextUITester tester = new TextUITester("1\nfile.txt");
+        TextUITester tester = new TextUITester("1\nmeteorites.csv");
         Scanner scnr = new Scanner(System.in);
         BackendImplementation backend = new BackendImplementation();
         FrontendImplementation frontend = new FrontendImplementation(backend,scnr);
 
         frontend.startCommandLoop();
         String output = tester.checkOutput();
-        if(output.contains("Searching for file...")){
+        if(output.contains("Searching for file...") && !output.contains("File not found")){
             Assertions.assertTrue(true);
         }else{
             Assertions.fail("Test Case 2: Failed");
