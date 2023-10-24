@@ -1,5 +1,8 @@
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class FrontendTests {
@@ -12,7 +15,7 @@ public class FrontendTests {
         TextUITester tester = new TextUITester("101\n4");
         Scanner scnr = new Scanner(System.in);
         BackendPlaceholderFrontend backend = new BackendPlaceholderFrontend();
-        FrontendInterface frontend = new FrontendInterface(backend,scnr);
+        FrontendImplementation frontend = new FrontendImplementation(backend,scnr);
         frontend.startCommandLoop();
 
         String output = tester.checkOutput();
@@ -29,10 +32,10 @@ public class FrontendTests {
      * Should inform user of submission and run backend file call
      */
     public void loadFileTest(){
-        TextUITester tester = new TextUITester("1\nfakeFile.txt");
+        TextUITester tester = new TextUITester("1\nfile.txt");
         Scanner scnr = new Scanner(System.in);
         BackendPlaceholderFrontend backend = new BackendPlaceholderFrontend();
-        FrontendInterface frontend = new FrontendInterface(backend,scnr);
+        FrontendImplementation frontend = new FrontendImplementation(backend,scnr);
 
         frontend.startCommandLoop();
         String output = tester.checkOutput();
@@ -52,7 +55,7 @@ public class FrontendTests {
         TextUITester tester = new TextUITester("3\n503.00\n500.00\n500.00\n503.00");
         Scanner scnr = new Scanner(System.in);
         BackendPlaceholderFrontend backend = new BackendPlaceholderFrontend();
-        FrontendInterface frontend = new FrontendInterface(backend,scnr);
+        FrontendImplementation frontend = new FrontendImplementation(backend,scnr);
 
         frontend.startCommandLoop();
         String output = tester.checkOutput();
@@ -72,7 +75,7 @@ public class FrontendTests {
         TextUITester tester = new TextUITester("3\n0.00\n0.01");
         Scanner scnr = new Scanner(System.in);
         BackendPlaceholderFrontend backend = new BackendPlaceholderFrontend();
-        FrontendInterface frontend = new FrontendInterface(backend,scnr);
+        FrontendImplementation frontend = new FrontendImplementation(backend,scnr);
 
         frontend.startCommandLoop();
         String output = tester.checkOutput();
@@ -92,7 +95,7 @@ public class FrontendTests {
         TextUITester tester = new TextUITester("2");
         Scanner scnr = new Scanner(System.in);
         BackendPlaceholderFrontend backend = new BackendPlaceholderFrontend();
-        FrontendInterface frontend = new FrontendInterface(backend,scnr);
+        FrontendImplementation frontend = new FrontendImplementation(backend,scnr);
 
         frontend.startCommandLoop();
         String output = tester.checkOutput();
@@ -112,7 +115,7 @@ public class FrontendTests {
         TextUITester tester = new TextUITester("4");
         Scanner scnr = new Scanner(System.in);
         BackendPlaceholderFrontend backend = new BackendPlaceholderFrontend();
-        FrontendInterface frontend = new FrontendInterface(backend,scnr);
+        FrontendImplementation frontend = new FrontendImplementation(backend,scnr);
 
         frontend.startCommandLoop();
         String output = tester.checkOutput();
@@ -120,6 +123,48 @@ public class FrontendTests {
             Assertions.assertTrue(true);
         }else{
             Assertions.fail("Test Case 6: Failed");
+        }
+    }
+
+    @Test
+    /**
+     * Tests backend integration of file loader if invalid file is provided
+     * Should run and throw FileNotFoundException
+     */
+    public void fileNotFoundIntegrationTest() {
+        TextUITester tester = new TextUITester("1\nunknownFile.txt");
+        Scanner scnr = new Scanner(System.in);
+        BackendPlaceholderFrontend backend = new BackendPlaceholderFrontend();
+        FrontendImplementation frontend = new FrontendImplementation(backend, scnr);
+
+        try{
+            frontend.startCommandLoop();
+            String output = tester.checkOutput();
+            Assertions.fail("Error not thrown");
+        }catch(FileNotFoundException e){
+            Assertions.assertTrue(true);
+        }catch(Exception e){
+            Assertions.fail("Incorrect error thrown");
+        }
+    }
+
+    @Test
+    /**
+     * Tests backend integration to ensure meteorite data list is returned
+     * Should run and output returned data
+     */
+    public void dataReturnedIntegrationTest(){
+        TextUITester tester = new TextUITester("3\n500.00\n503.00");
+        Scanner scnr = new Scanner(System.in);
+        BackendPlaceholderFrontend backend = new BackendPlaceholderFrontend();
+        FrontendImplementation frontend = new FrontendImplementation(backend, scnr);
+
+        frontend.startCommandLoop();
+        String output = tester.checkOutput();
+        if(output.contains("No results in range")){
+            Assertions.fail("No data returned from backend");
+        }else{
+            Assertions.assertTrue(true);
         }
     }
 }
