@@ -148,7 +148,7 @@ public class FrontendImplementation implements FrontendInterface {
      */
     public static void main(String[] args){
 	    Scanner scan = new Scanner(System.in);
-	    BackendPlaceholderFrontend back= new BackendPlaceholderFrontend();
+	    BackendImplementation back= new BackendImplementation();
 	    FrontendInterface front = new FrontendInterface(back, scan);
 	    front.startCommandLoop();
 	}
