@@ -142,6 +142,16 @@ public class FrontendImplementation implements FrontendInterface {
     public void exitApp() {
         System.out.println("Exiting application...");
     }
+	
+    /**
+     * Initializes and runs command loop
+     */
+    public static void main(String[] args){
+	    Scanner scan = new Scanner(System.in);
+	    BackendPlaceholderFrontend back= new BackendPlaceholderFrontend();
+	    FrontendInterface front = new FrontendInterface(back, scan);
+	    front.startCommandLoop();
+	}
 }
 
 

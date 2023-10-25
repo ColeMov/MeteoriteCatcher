@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BackendImplementation implements BackendInterface {
-    private BackendPlaceholder meteoriteTree = new BackendPlaceholder();
+    private IterableMultiKeyRBT meteoriteTree = new IterableMultiKeyRBT();
 
-    public BackendPlaceholder getMeteoriteTree() {
+    public IterableMultiKeyRBT getMeteoriteTree() {
         return meteoriteTree;
     }
 
