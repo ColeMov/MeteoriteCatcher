@@ -131,7 +131,7 @@ public class FrontendImplementation implements FrontendInterface {
         if(data == null){
             System.out.println("No results in range");
         }else {
-            for(int i = 0; i < data.size(); i++){
+            for(int i = 0; i < data.size()-1; i++){
                 System.out.println(data.get(i).getName());
             }
         }
