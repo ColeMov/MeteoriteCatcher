@@ -77,9 +77,11 @@ public class FrontendImplementation implements FrontendInterface {
         System.out.println("Searching for file...");
         try{
             backend.readDataFromFile(fileName);
+            System.out.println(fileName + " loaded");
         }catch(Exception e){
             System.out.println("File not found");
         }
+        startCommandLoop();
     }
 
     /**
@@ -134,6 +136,7 @@ public class FrontendImplementation implements FrontendInterface {
             }
         }
         System.out.println("==========================");
+        startCommandLoop();
     }
 
     /**
@@ -149,7 +152,7 @@ public class FrontendImplementation implements FrontendInterface {
     public static void main(String[] args){
 	    Scanner scan = new Scanner(System.in);
 	    BackendImplementation back= new BackendImplementation();
-	    FrontendInterface front = new FrontendInterface(back, scan);
+	    FrontendImplementation front = new FrontendImplementation(back, scan);
 	    front.startCommandLoop();
 	}
 }

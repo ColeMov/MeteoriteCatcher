@@ -39,14 +39,14 @@ public class FrontendTests {
      * Should inform user of submission and run backend file call
      */
     public void loadFileTest(){
-        TextUITester tester = new TextUITester("1\nmeteorites.csv");
+        TextUITester tester = new TextUITester("1\nmeteorites.csv\n4");
         Scanner scnr = new Scanner(System.in);
         BackendImplementation backend = new BackendImplementation();
         FrontendImplementation frontend = new FrontendImplementation(backend,scnr);
 
         frontend.startCommandLoop();
         String output = tester.checkOutput();
-        if(output.contains("Searching for file...") && !output.contains("File not found")){
+        if(output.contains("Searching for file...") && output.contains("loaded")){
             Assertions.assertTrue(true);
         }else{
             Assertions.fail("Test Case 2: Failed");
@@ -59,7 +59,7 @@ public class FrontendTests {
      * Should rerequest range values and inform user of invalid submission
      */
     public void invalidRangeTest(){
-        TextUITester tester = new TextUITester("3\n503.00\n500.00\n500.00\n503.00");
+        TextUITester tester = new TextUITester("3\n503.00\n500.00\n500.00\n503.00\n4");
         Scanner scnr = new Scanner(System.in);
         BackendImplementation backend = new BackendImplementation();
         FrontendImplementation frontend = new FrontendImplementation(backend,scnr);
@@ -79,7 +79,7 @@ public class FrontendTests {
      * Should finish execution and display results
      */
     public void rangeTest(){
-        TextUITester tester = new TextUITester("3\n0.00\n0.01");
+        TextUITester tester = new TextUITester("3\n0.00\n0.01\n4");
         Scanner scnr = new Scanner(System.in);
         BackendImplementation backend = new BackendImplementation();
         FrontendImplementation frontend = new FrontendImplementation(backend,scnr);
@@ -99,7 +99,7 @@ public class FrontendTests {
      * Should run program as expected with loadHighMeteorite method call
      */
     public void loadHighestTest(){
-        TextUITester tester = new TextUITester("2");
+        TextUITester tester = new TextUITester("2\n4");
         Scanner scnr = new Scanner(System.in);
         BackendImplementation backend = new BackendImplementation();
         FrontendImplementation frontend = new FrontendImplementation(backend,scnr);
@@ -139,7 +139,7 @@ public class FrontendTests {
      * Should run and throw FileNotFoundException
      */
     public void fileNotFoundIntegrationTest() {
-        TextUITester tester = new TextUITester("1\nunknownFile.txt");
+        TextUITester tester = new TextUITester("1\nunknownFile.txt\n4");
         Scanner scnr = new Scanner(System.in);
         BackendImplementation backend = new BackendImplementation();
         FrontendImplementation frontend = new FrontendImplementation(backend, scnr);
@@ -159,7 +159,7 @@ public class FrontendTests {
      * Should run and output returned data
      */
     public void dataReturnedIntegrationTest(){
-        TextUITester tester = new TextUITester("3\n500.00\n503.00");
+        TextUITester tester = new TextUITester("3\n500.00\n503.00\n4");
         Scanner scnr = new Scanner(System.in);
         BackendImplementation backend = new BackendImplementation();
         FrontendImplementation frontend = new FrontendImplementation(backend, scnr);

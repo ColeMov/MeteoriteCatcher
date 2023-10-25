@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BackendImplementation implements BackendInterface {
-    private IterableMultiKeyRBT meteoriteTree = new IterableMultiKeyRBT();
+    private IterableMultiKeyRBT<Meteorite> meteoriteTree = new IterableMultiKeyRBT<>();
 
-    public IterableMultiKeyRBT getMeteoriteTree() {
+    public IterableMultiKeyRBT<Meteorite> getMeteoriteTree() {
         return meteoriteTree;
     }
 
@@ -32,7 +32,7 @@ public class BackendImplementation implements BackendInterface {
         }
 
         // Clear the existing data
-        getMeteoriteTree().meteorites.clear();
+        getMeteoriteTree().clear();
 
         // Read data from the file and populate meteoriteTree
         BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -115,7 +115,7 @@ public class BackendImplementation implements BackendInterface {
         double maxMass = Double.MIN_VALUE; // Initialize maxMass to the smallest possible value
         List<Meteorite> meteorites = new ArrayList<>();
 
-        for (Meteorite meteorite : getMeteoriteTree().meteorites) {
+        for (Meteorite meteorite : getMeteoriteTree()) {
             double mass = meteorite.getMass();
             if (mass > maxMass) {
                 maxMass = mass;
@@ -141,7 +141,7 @@ public class BackendImplementation implements BackendInterface {
         // Implement getting meteorites within a specific mass range from the meteoriteTree
         List<Meteorite> meteorites = new ArrayList();
 
-        for (Meteorite meteorite : this.meteoriteTree.meteorites) {
+        for (Meteorite meteorite : this.meteoriteTree) {
             double mass = meteorite.getMass();
 
             if (mass >= minMass && mass <= maxMass) {

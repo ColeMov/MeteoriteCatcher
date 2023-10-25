@@ -2,9 +2,8 @@
 // Name: Cole Movsessian
 // Email: movsessian@wisc.edu
 // Group: C35
-// TA: Alex Peseckis
-// Lecturer: Florian
-// Notes to Grader: <optional extra notes>
+// TA: Alexander Peseckis
+// Lecturer: Florian Heimerl
 
 import java.util.LinkedList;
 import java.util.Stack;
@@ -36,7 +35,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements SortedCollecti
         @SuppressWarnings("unchecked")
         public Node<T>[] down = (Node<T>[])new Node[2];
         public Node(T data) { this.data = data; }
-        
+
         /**
          * @return true when this node has a parent and is the right child of
          * that parent, otherwise return false
@@ -59,15 +58,15 @@ public class BinarySearchTree<T extends Comparable<T>> implements SortedCollecti
      */
     public boolean insert(T data) throws NullPointerException {
         if (data == null)
-			throw new NullPointerException("Cannot insert data value null into the tree.");
-		return this.insertHelper(new Node<>(data));
+            throw new NullPointerException("Cannot insert data value null into the tree.");
+        return this.insertHelper(new Node<>(data));
     }
 
     /**
      * Performs a naive insertion into a binary search tree: adding the new node
      * in a leaf position within the tree. After this insertion, no attempt is made
      * to restructure or balance the tree.
-     * @param node the new node to be inserted
+     * @param newNode the new node to be inserted
      * @return true if the value was inserted, false if is was in the tree already
      * @throws NullPointerException when the provided node is null
      */
@@ -85,8 +84,8 @@ public class BinarySearchTree<T extends Comparable<T>> implements SortedCollecti
             while (true) {
                 int compare = newNode.data.compareTo(current.data);
                 if (compare == 0) {
-                	return false;
-				} else if (compare < 0) {
+                    return false;
+                } else if (compare < 0) {
                     // insert in left subtree
                     if (current.down[0] == null) {
                         // empty space to insert into
@@ -108,7 +107,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements SortedCollecti
                         return true;
                     } else {
                         // no empty space, keep moving down the tree
-                        current = current.down[1]; 
+                        current = current.down[1];
                     }
                 }
             }
@@ -131,46 +130,45 @@ public class BinarySearchTree<T extends Comparable<T>> implements SortedCollecti
      */
     protected void rotate(Node<T> child, Node<T> parent) throws IllegalArgumentException {
         // TODO: Implement this method.
-        if(child.up != parent) {
-            throw new IllegalArgumentException();
-        }else if(child.isRightChild()) {
-            //left rotation
-        	parent.down[1] = child.down[0];
-        	child.down[0] = parent;
-        	if(parent.up == null) {
-        		child.up = null;
-        		this.root = child;
-        	}else {
-        		Node<T> grandpa = parent.up;
-        		child.up = grandpa;
-        		if(grandpa.down[0].equals(parent)) {
-        			grandpa.down[0] = child;
-        		}else {
-        			grandpa.down[1] = child;
-        		}
-        	}
-        	parent.up = child;
-        }else {
-            //right rotation
-        	parent.down[0] = child.down[1];
-        	child.down[1] = parent;
-        	if(parent.up == null) {
-        		child.up = null;
-        		this.root = child;
-        	}else {
-        		Node<T> grandma = parent.up;
-        		child.up = grandma;
-        		if(grandma.down[0].equals(parent)) {
-        			grandma.down[0] = child;
-        		}else {
-        			grandma.down[1] = child;
-        		}
-        	}
-        	parent.up = child;
-        }
-    }
 
-	/**
+        if (parent == null || child == null) {
+            throw new IllegalArgumentException("Cannot be null.");
+        }
+        boolean isLeftRotation = (parent.down[0] == child);
+        boolean isRightRotation = (parent.down[1] == child);
+        if (!isLeftRotation && !isRightRotation) {
+            throw new IllegalArgumentException("");}
+
+            Node<T> grandparent = parent.up;
+
+        if (grandparent != null) {
+            if (grandparent.down[0] == parent) {
+                grandparent.down[0] = child;
+            } else {
+                grandparent.down[1] = child;
+            }} else {
+            root = child;
+        }
+        if (isLeftRotation) {
+            parent.down[0] = child.down[1];
+            if (child.down[1] != null) {
+                child.down[1].up = parent;
+            }
+            child.down[1] = parent;
+        } else {
+            parent.down[1] = child.down[0];
+            if (child.down[0] != null) {
+                child.down[0].up = parent;
+            }
+            child.down[0] = parent;
+        }child.up = grandparent;
+        parent.up = child;
+        }
+
+
+
+
+    /**
      * Get the size of the tree (its number of nodes).
      * @return the number of nodes in the tree
      */
@@ -314,82 +312,64 @@ public class BinarySearchTree<T extends Comparable<T>> implements SortedCollecti
     // Eg: public static boolean test4() {}
     // Do not change the method name or return type of the existing tests.
     // You can run your tests through the static main method of this class.
-    
-    /*
-     * Tests right rotation of binary search tree at root
+
+    /**
+     * Test a left rotation at the root of the tree.
      */
     public static boolean test1() {
-        // Creates test bst
-    	BinarySearchTree bst = new BinarySearchTree();
+        // TODO: Implement this test.
+        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+        bst.insert(80);
+        bst.insert(60);
+        bst.insert(100);
         bst.insert(50);
-        bst.insert(30);
-        bst.insert(10);
-        // Rotates bst and returns true if done correctly
-        bst.rotate(bst.findNode(30), bst.findNode(50));
-        if(bst.findNode(30).down[0].equals(bst.findNode(10)) && bst.findNode(30).down[1].equals(bst.findNode(50)) && bst.findNode(30).equals(bst.root)) {
-        	return true;
-        }
-        return false;
+
+        // Perform a left rotation at the root (50)
+        bst.rotate(bst.root.down[0], bst.root);
+
+        String expectedInOrder = "[ 50, 60, 80, 100 ]";
+        return bst.toInOrderString().equals(expectedInOrder);
+
     }
-    
-    /*
-     * Tests left rotation of binary search tree from subtree
-     */
-    public static boolean test2() {
-    	// Creates new test bst
-        BinarySearchTree bst2 = new BinarySearchTree();
-        bst2.insert(50);
-        bst2.insert(40);
-        bst2.insert(60);
-        bst2.insert(65);
-        bst2.insert(70);
-        // Rotates the subtree and returns true if done correctly
-        bst2.rotate(bst2.findNode(65), bst2.findNode(60));
-        if(bst2.findNode(65).down[0].equals(bst2.findNode(60)) && bst2.findNode(65).down[1].equals(bst2.findNode(70)) && bst2.findNode(65).up.equals(bst2.findNode(50))) {
-        	return true;
-        }
-        return false;
+
+
+
+    /**
+     * Test a right rotation at the root of the tree.
+     */ public static boolean test2() {
+        // TODO: Implement this test.
+        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+        bst.insert(100);
+        bst.insert(80);
+        bst.insert(120);
+        bst.insert(130);
+
+        // Perform a right rotation at the root (50)
+        bst.rotate(bst.root.down[1], bst.root);
+
+        String expectedInOrder = "[ 80, 100, 120, 130 ]";
+        return bst.toInOrderString().equals(expectedInOrder);
+
     }
-    
-    /*
-     *  Tests invalid input for rotate method
-     */
-    public static boolean test3() {
-        // Creates valid bst
-    	BinarySearchTree bst3 = new BinarySearchTree();
-    	bst3.insert(30);
-    	bst3.insert(20);
-    	bst3.insert(400);
-    	// Incorrectly calls rotation method and should return true if error is received
-    	try {
-    		bst3.rotate(bst3.findNode(400), bst3.findNode(20));
-    	}catch(IllegalArgumentException e){
-    		return true;
-    	}
-        return false;
+
+    /**
+     * Test a combination of left and right rotations.
+     */public static boolean test3() {
+        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+        bst.insert(100);
+        bst.insert(80);
+        bst.insert(120);
+        bst.insert(110);
+        bst.insert(115);
+
+        // Perform a left rotation at the root (50), then a right rotation at the new root (60)
+        bst.rotate(bst.root.down[0], bst.root);
+        bst.rotate(bst.root.down[1], bst.root);
+
+        String expectedInOrder = "[ 80, 100, 110, 115, 120 ]";
+        return bst.toInOrderString().equals(expectedInOrder);
     }
-    
-    /*
-     *  Tests the left rotation that my program failed on the first submission
-     */
-    public static boolean test4() {
-    	// Creates test BST
-    	BinarySearchTree bst4 = new BinarySearchTree();
-    	bst4.insert(4);
-    	bst4.insert(2);
-    	bst4.insert(1);
-    	bst4.insert(3);
-    	bst4.insert(6);
-    	bst4.insert(5);
-    	bst4.insert(7);
-    	// Tests if properly rotated and returns true is correct
-    	bst4.rotate(bst4.findNode(3), bst4.findNode(2));
-    	if(bst4.toLevelOrderString().equals("[ 4, 3, 6, 2, 5, 7, 1 ]")) {
-    		return true;
-    	}
-    	return false;
-    }
-    
+
     /**
      * Main method to run tests. If you'd like to add additional test methods, add a line for each
      * of them.
@@ -399,7 +379,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements SortedCollecti
         System.out.println("Test 1 passed: " + test1());
         System.out.println("Test 2 passed: " + test2());
         System.out.println("Test 3 passed: " + test3());
-        System.out.println("Test 4 passed: " + test4());
     }
 
 }
