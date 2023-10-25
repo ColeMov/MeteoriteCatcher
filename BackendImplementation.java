@@ -1,18 +1,12 @@
-// --== CS400 Fall 2023 File Header Information ==--
-// Name: Arnav Srivastav
-// Email: asrivastav32@wisc.edu
-// Group: C35
-// TA: Alexander Peseckis
-// Lecturer: Florian Heimerl
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class BackendImplementation implements BackendInterface {
-    private BackendPlaceholder meteoriteTree = new BackendPlaceholder();
+    private IterableMultiKeyRBT<Meteorite> meteoriteTree = new IterableMultiKeyRBT<>();
 
-    public BackendPlaceholder getMeteoriteTree() {
+    public IterableMultiKeyRBT<Meteorite> getMeteoriteTree() {
         return meteoriteTree;
     }
 
@@ -32,7 +26,7 @@ public class BackendImplementation implements BackendInterface {
         }
 
         // Clear the existing data
-        getMeteoriteTree().meteorites.clear();
+        meteoriteTree.clear();
 
         // Read data from the file and populate meteoriteTree
         BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -70,7 +64,7 @@ public class BackendImplementation implements BackendInterface {
             }
 
             // Insert the meteorite into the tree
-            this.meteoriteTree.insertSingleKey(new MeteoriteImpl(name, latitude, longitude, fall, mass));
+            meteoriteTree.insertSingleKey(new MeteoriteImpl(name, latitude, longitude, fall, mass));
         }
 
         reader.close();
@@ -108,14 +102,14 @@ public class BackendImplementation implements BackendInterface {
      */
     @Override
     public List<Meteorite> getMeteoritesWithMaxMass() {
-        if (getMeteoriteTree().isEmpty()) {
+        if (meteoriteTree.isEmpty()) {
             return new ArrayList<>();
         }
 
         double maxMass = Double.MIN_VALUE; // Initialize maxMass to the smallest possible value
         List<Meteorite> meteorites = new ArrayList<>();
 
-        for (Meteorite meteorite : getMeteoriteTree().meteorites) {
+        for (Meteorite meteorite : meteoriteTree) {
             double mass = meteorite.getMass();
             if (mass > maxMass) {
                 maxMass = mass;
@@ -141,7 +135,7 @@ public class BackendImplementation implements BackendInterface {
         // Implement getting meteorites within a specific mass range from the meteoriteTree
         List<Meteorite> meteorites = new ArrayList();
 
-        for (Meteorite meteorite : this.meteoriteTree.meteorites) {
+        for (Meteorite meteorite : meteoriteTree) {
             double mass = meteorite.getMass();
 
             if (mass >= minMass && mass <= maxMass) {
@@ -150,5 +144,13 @@ public class BackendImplementation implements BackendInterface {
         }
 
         return meteorites;
+    }
+    public static void main(String[] args) {
+        BackendImplementation backend = new BackendImplementation();
+        Scanner scnr = new Scanner(System.in);
+        FrontendImplementation frontend = new FrontendImplementation(backend,scnr); // Replace 'Frontend' with the actual frontend class name
+
+        // Start the main command loop of the frontend
+        frontend.startCommandLoop();
     }
 }

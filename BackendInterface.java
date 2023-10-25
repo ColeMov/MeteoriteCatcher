@@ -44,3 +44,4 @@ public interface BackendInterface {
      */
     List<Meteorite> getMeteoritesWithinMassRange(double minMass, double maxMass);
 }
+

@@ -5,6 +5,7 @@
 // TA: Alexander Peseckis
 // Lecturer: Florian Heimerl
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
@@ -125,13 +126,13 @@ public class BackendDeveloperTests  {
     @Test
     public void IntegrationTestLoadFile() {
         TextUITester tester = new TextUITester("1\nmeteorite.csv\n4"); // Provided commands: Load file, File name, Exit
+        Scanner scnr = new Scanner(System.in);
         BackendImplementation backend = new BackendImplementation();
-        Scanner scanner = tester.getScanner(); // Get the scanner from TextUITester
-        FrontendInterface frontend = new FrontendInterface(backend, scanner);
+        FrontendInterface frontend = new FrontendImplementation(backend, scnr);
 
         frontend.startCommandLoop();
 
-        String output = tester.getCapturedOutput();
+        String output = tester.checkOutput();
         if (output.contains("Searching for file...")) {
             Assertions.assertTrue(true);
         } else {
@@ -147,12 +148,12 @@ public class BackendDeveloperTests  {
     public void IntegrationTestListAllRange() {
         TextUITester tester = new TextUITester("3\n100.0\n200.0\n4"); // Provided commands: List range, Low threshold, High threshold, Exit
         BackendImplementation backend = new BackendImplementation();
-        Scanner scanner = tester.getScanner(); // Get the scanner from TextUITester
-        FrontendInterface frontend = new FrontendInterface(backend, scanner);
+        Scanner scnr = new Scanner(System.in);
+        FrontendInterface frontend = new FrontendImplementation(backend, scnr);
 
         frontend.startCommandLoop();
 
-        String output = tester.getCapturedOutput();
+        String output = tester.checkOutput();
         if (output.contains("Printing meteorites within range...")) {
             Assertions.assertTrue(true);
         } else {
@@ -160,5 +161,5 @@ public class BackendDeveloperTests  {
         }
     }
 }
-}
+
 
