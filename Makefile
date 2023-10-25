@@ -1,16 +1,24 @@
-BackendInterface.interface: BackendInterface.java
-	 javac BackendInterface.java
-MeteoriteInterface.interface: MeteoriteInterface.java
-	 javac MeteoriteInterface.java
+IterableMultiKeyRBT.class: IterableMultiKeyRBT.java
+	javac -cp ../junit5.jar:. IterableMultiKey.java
+Meteorite.class: Meteorite.java
+	javac Meteorite.java
 MeteoriteImpl.class: MeteoriteInterface.interface MeteoriteImpl.java
-	 javac MeteoriteImpl.java
-BackendPlaceholder.class: BackendPlaceholder.java
-	 javac BackendPlaceholder.java
-BackendImplementation.class: BackendImplementation.java BackendInterface.interface MeteoriteImpl.java BackendPlaceholder.java
-	 javac BackendImplementation.java
+	javac MeteoriteImpl.java
+BackendInterface.interface: BackendInterface.java
+	javac BackendInterface.java
+BackendImplementation.class: BackendImplementation.java BackendInterface.interface MeteoriteImpl.java IterableMultiKeyRBT.java
+	javac BackendImplementation.java
+FrontendInterface.class: FrontendInterface.java
+	javac FrontendInterface.java
+FrontendTests.class: FrontendTests.java
+	javac -cp ../junit5.jar:. FrontendTests.java
 BackendDeveloperTests.class: BackendImplementation.class BackendImplementation.java
 	javac -cp ../junit5.jar:. BackendDeveloperTests.java
 runBDTests: BackendDeveloperTests.class
-       	 java -jar ../junit5.jar --class-path=. --select-class=BackendDeveloperTests
+	java -jar ../junit5.jar --class-path=. --select-class=BackendDeveloperTests
+runFDTests: FrontendInterface.class FrontendTests.class BackendImplementation.class
+	java -jar ../junit5.jar --class-path=. --select-class=FrontendTests
 clean:
-	 rm *.class
+	rm *.class
+
+
