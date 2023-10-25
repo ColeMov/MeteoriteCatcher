@@ -6,7 +6,6 @@
 // Lecturer: Florian Heimerl
 
 import java.io.IOException;
-import java.sql.SQLOutput;
 import java.util.Scanner;
 import java.util.List;
 
@@ -146,16 +145,16 @@ public class FrontendImplementation implements FrontendInterface {
     public void exitApp() {
         System.out.println("Exiting application...");
     }
-
+	
     /**
      * Initializes and runs command loop
      */
     public static void main(String[] args){
-        Scanner scan = new Scanner(System.in);
-        BackendImplementation back= new BackendImplementation();
-        FrontendImplementation front = new FrontendImplementation(back, scan);
-        front.startCommandLoop();
-    }
+	    Scanner scan = new Scanner(System.in);
+	    BackendImplementation back= new BackendImplementation();
+	    FrontendImplementation front = new FrontendImplementation(back, scan);
+	    front.startCommandLoop();
+	}
 }
 
 

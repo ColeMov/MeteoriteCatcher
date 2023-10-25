@@ -46,7 +46,7 @@ public class FrontendTests {
 
         frontend.startCommandLoop();
         String output = tester.checkOutput();
-        if(output.contains("Searching for file...") && !output.contains("File not found")){
+        if(output.contains("Searching for file...") && output.contains("loaded")){
             Assertions.assertTrue(true);
         }else{
             Assertions.fail("Test Case 2: Failed");
@@ -173,4 +173,3 @@ public class FrontendTests {
         }
     }
 }
-

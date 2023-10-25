@@ -4,7 +4,6 @@
 // Group: C35
 // TA: Alexander Peseckis
 // Lecturer: Florian Heimerl
-
 public interface Meteorite extends Comparable<Meteorite> {
     /**
      * Get the name of the meteorite.

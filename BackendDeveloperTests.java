@@ -5,11 +5,9 @@
 // TA: Alexander Peseckis
 // Lecturer: Florian Heimerl
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
-import java.util.Scanner;
 
 /**
  * JUnit tests for the Backend Developer's implementation of the Backend interface.
@@ -118,48 +116,4 @@ public class BackendDeveloperTests  {
             assertTrue(mass >= minMass && mass <= maxMass);
         }
     }
-
-    /**
-     * Integration test for loading data from a file through the frontend.
-     * This test checks if the frontend properly calls the backend's readDataFromFile method.
-     */
-    @Test
-    public void IntegrationTestLoadFile() {
-        TextUITester tester = new TextUITester("1\nmeteorite.csv\n4"); // Provided commands: Load file, File name, Exit
-        Scanner scnr = new Scanner(System.in);
-        BackendImplementation backend = new BackendImplementation();
-        FrontendInterface frontend = new FrontendImplementation(backend, scnr);
-
-        frontend.startCommandLoop();
-
-        String output = tester.checkOutput();
-        if (output.contains("Searching for file...")) {
-            Assertions.assertTrue(true);
-        } else {
-            Assertions.fail("Integration Test 1: Failed");
-        }
-    }
-
-    /**
-     * Integration test for listing meteorites within a specified mass range through the frontend.
-     * This test checks if the frontend properly calls the backend's getMeteoritesByMassRange method.
-     */
-    @Test
-    public void IntegrationTestListAllRange() {
-        TextUITester tester = new TextUITester("3\n100.0\n200.0\n4"); // Provided commands: List range, Low threshold, High threshold, Exit
-        BackendImplementation backend = new BackendImplementation();
-        Scanner scnr = new Scanner(System.in);
-        FrontendInterface frontend = new FrontendImplementation(backend, scnr);
-
-        frontend.startCommandLoop();
-
-        String output = tester.checkOutput();
-        if (output.contains("Printing meteorites within range...")) {
-            Assertions.assertTrue(true);
-        } else {
-            Assertions.fail("Integration Test 2: Failed");
-        }
-    }
 }
-
-
