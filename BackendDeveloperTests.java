@@ -160,4 +160,45 @@ public class BackendDeveloperTests  {
         }
     }
 
+    @Test
+    public void testLoadFileWithNonExistentFile() {
+
+        TextUITester tester = new TextUITester("1\nnonexistent.csv\n4");
+        Scanner scanner = new Scanner(System.in);
+        BackendImplementation backend = new BackendImplementation();
+        FrontendImplementation frontend = new FrontendImplementation(backend, scanner);
+
+        // Simulate user input with a non-existent file
+
+
+        frontend.startCommandLoop();
+        String output = tester.checkOutput();
+
+        // Verify that the code handles a non-existent file properly and provides an error message
+        if( output.contains("File not found")){
+            Assertions.assertTrue(true);
+        } else{
+            Assertions.fail("Frontend testing failed for this test.");
+        }
+    }
+
+    @Test
+    public void testListAllRangeWithInvalidRange() {
+        TextUITester tester = new TextUITester("3\n200.00\n200.00\n4\n100\n4");
+        Scanner scanner = new Scanner(System.in);
+        BackendImplementation backend = new BackendImplementation();
+        FrontendImplementation frontend = new FrontendImplementation(backend, scanner);
+
+        frontend.startCommandLoop();
+        String output = tester.checkOutput();
+
+        if( output.contains("Invalid range: try again")){
+            Assertions.assertTrue(true);
+        } else{
+            Assertions.fail("Frontend testing failed for this test.");
+        }
+
+
+    }
+
 }
