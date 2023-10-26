@@ -1,5 +1,5 @@
-Script started on Wed Oct 25 02:37:03 2023
-[1m[7m%[27m[1m[0m                                                                                                                                                                                  [0m[27m[24m[Jarnav@Arnavs-MacBook-Air p1 % [K[?2004htt  ggit statuis  s[?2004l
+Script started on Thu Oct 26 13:24:34 2023
+[1m[7m%[27m[1m[0m                                                                                                                                                                                  [0m[27m[24m[Jarnav@Arnavs-MacBook-Air p1 % [K[?2004hggit status[?2004l
 On branch backendFinal
 Your branch is up to date with 'origin/backendFinal'.
 
@@ -12,36 +12,33 @@ Untracked files:
   (use "git add <file>..." to include in what will be committed)
 	[31m.DS_Store[m
 	[31m.idea/[m
-	[31mBackendPlaceholder.java[m
 	[31mRedBlackTree.java[m
 
 no changes added to commit (use "git add" and/or "git commit -a")
-[1m[7m%[27m[1m[0m                                                                                                                                                                                  [0m[27m[24m[Jarnav@Arnavs-MacBook-Air p1 % [K[?2004hggit lof g -1[?2004l
-[?1h=[33mcommit 2949a26a47b460737c9ce210b32a684b944d532f[m[33m ([m[1;36mHEAD -> [m[1;32mbackendFinal[m[33m, [m[1;31morigin/backendFinal[m[33m)[m[m
+[1m[7m%[27m[1m[0m                                                                                                                                                                                  [0m[27m[24m[Jarnav@Arnavs-MacBook-Air p1 % [K[?2004hggit log -1[?2004l
+[?1h=[33mcommit 0a49459a8793d49c8f89c6d92ba58ecce9c69911[m[33m ([m[1;36mHEAD -> [m[1;32mbackendFinal[m[33m, [m[1;31morigin/backendFinal[m[33m)[m[m
 Author: Arnav Srivastav <arnav@Arnavs-MacBook-Air.local>[m
-Date:   Wed Oct 25 02:36:25 2023 -0500[m
+Date:   Thu Oct 26 01:00:02 2023 -0500[m
 [m
-     Adding Updated BDTests[m
+    Added 2 testers for partner[m
 [K[?1l>[1m[7m%[27m[1m[0m                                                                                                                                                                                  [0m[27m[24m[Jarnav@Arnavs-MacBook-Air p1 % [K[?2004hmmake clean[?2004l
 rm *.class
+rm: *.class: No such file or directory
+make: *** [clean] Error 1
 [1m[7m%[27m[1m[0m                                                                                                                                                                                  [0m[27m[24m[Jarnav@Arnavs-MacBook-Air p1 % [K[?2004hs[?2004l
 zsh: command not found: s
+[1m[7m%[27m[1m[0m                                                                                                                                                                                  [0m[27m[24m[Jarnav@Arnavs-MacBook-Air p1 % [K[?2004h[?2004l
 [1m[7m%[27m[1m[0m                                                                                                                                                                                  [0m[27m[24m[Jarnav@Arnavs-MacBook-Air p1 % [K[?2004hlls[?2004l
-BackendDeveloperTests.java			FrontendTests.java				MeteoriteImpl.java
-BackendImplementation.java			IterableMultiKeyRBT.java			RedBlackTree.java
-BackendInterface.java				IterableMultiKeySortedCollectionInterface.java	SortedCollectionInterface.java
-BackendPlaceholder.java				KeyList.java					TextUITester.java
+BackendDeveloperTests.java			IterableMultiKeyRBT.java			RedBlackTree.java
+BackendImplementation.java			IterableMultiKeySortedCollectionInterface.java	SortedCollectionInterface.java
+BackendInterface.java				KeyList.java					TextUITester.java
 BinarySearchTree.java				KeyListInterface.java				log
 FrontendImplementation.java			Makefile					meteorites.csv
 FrontendInterface.java				Meteorite.java
-[1m[7m%[27m[1m[0m                                                                                                                                                                                  [0m[27m[24m[Jarnav@Arnavs-MacBook-Air p1 % [K[?2004hmmake runD FDTests[?2004l
-javac FrontendInterface.java
+FrontendTests.java				MeteoriteImpl.java
+[1m[7m%[27m[1m[0m                                                                                                                                                                                  [0m[27m[24m[Jarnav@Arnavs-MacBook-Air p1 % [K[?2004hmmake runFDTests[?2004l
 javac -cp ../junit5.jar:. FrontendTests.java
 Note: Some input files use unchecked or unsafe operations.
-Note: Recompile with -Xlint:unchecked for details.
-javac BackendInterface.java
-javac BackendImplementation.java
-Note: BackendImplementation.java uses unchecked or unsafe operations.
 Note: Recompile with -Xlint:unchecked for details.
 java -jar ../junit5.jar --class-path=. --select-class=FrontendTests
 
@@ -61,7 +58,7 @@ Thanks for using JUnit! Support its development at https://junit.org/sponsoring
 [36m├─[0m [36mJUnit Vintage[0m [32m✔[0m
 [36m└─[0m [36mJUnit Platform Suite[0m [32m✔[0m
 
-Test run finished after 653 ms
+Test run finished after 654 ms
 [         4 containers found      ]
 [         0 containers skipped    ]
 [         4 containers started    ]
@@ -75,11 +72,7 @@ Test run finished after 653 ms
 [         8 tests successful      ]
 [         0 tests failed          ]
 
-[1m[7m%[27m[1m[0m                                                                                                                                                                                  [0m[27m[24m[Jarnav@Arnavs-MacBook-Air p1 % [K[?2004hmmake runBDTE ests[?2004l
-javac BackendInterface.java
-javac BackendImplementation.java
-Note: BackendImplementation.java uses unchecked or unsafe operations.
-Note: Recompile with -Xlint:unchecked for details.
+[1m[7m%[27m[1m[0m                                                                                                                                                                                  [0m[27m[24m[Jarnav@Arnavs-MacBook-Air p1 % [K[?2004hmmake runBDTests[?2004l
 javac -cp ../junit5.jar:. BackendDeveloperTests.java
 java -jar ../junit5.jar --class-path=. --select-class=BackendDeveloperTests
 
@@ -88,6 +81,8 @@ Thanks for using JUnit! Support its development at https://junit.org/sponsoring
 [36m╷[0m
 [36m├─[0m [36mJUnit Jupiter[0m [32m✔[0m
 [36m│  └─[0m [36mBackendDeveloperTests[0m [32m✔[0m
+[36m│     ├─[0m [34mtestListAllRangeWithInvalidRange()[0m [32m✔[0m
+[36m│     ├─[0m [34mtestLoadFileWithNonExistentFile()[0m [32m✔[0m
 [36m│     ├─[0m [34mtestMeteoriteAccessors()[0m [32m✔[0m
 [36m│     ├─[0m [34mIntegrationTestListAllRange()[0m [32m✔[0m
 [36m│     ├─[0m [34mIntegrationTestLoadFile()[0m [32m✔[0m
@@ -98,20 +93,20 @@ Thanks for using JUnit! Support its development at https://junit.org/sponsoring
 [36m├─[0m [36mJUnit Vintage[0m [32m✔[0m
 [36m└─[0m [36mJUnit Platform Suite[0m [32m✔[0m
 
-Test run finished after 577 ms
+Test run finished after 701 ms
 [         4 containers found      ]
 [         0 containers skipped    ]
 [         4 containers started    ]
 [         0 containers aborted    ]
 [         4 containers successful ]
 [         0 containers failed     ]
-[         7 tests found           ]
+[         9 tests found           ]
 [         0 tests skipped         ]
-[         7 tests started         ]
+[         9 tests started         ]
 [         0 tests aborted         ]
-[         7 tests successful      ]
+[         9 tests successful      ]
 [         0 tests failed          ]
 
 [1m[7m%[27m[1m[0m                                                                                                                                                                                  [0m[27m[24m[Jarnav@Arnavs-MacBook-Air p1 % [K[?2004heexit[?2004l
 
-Script done on Wed Oct 25 02:38:10 2023
+Script done on Thu Oct 26 13:26:00 2023
